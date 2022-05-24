@@ -1,0 +1,19 @@
+
+<div class = "container" *ngIf="this.authService.ingresare">
+    
+    <div class="card text-center">
+        <div class="card-header">
+        <b>LOGIN</b>
+        </div>
+        <div class="card-body p-4">
+            <label style="float: left;" >Email</label>
+            <input class="form-control m-2" type = "email" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
+
+            <label style="float: left;">Password</label>
+            <input class="form-control m-2" type = "password" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
+
+            <button class="btn btn-primary w-100 m-2" (click)="Ingresar()">Ingresar</button>
+        </div>
+    </div>
+</div>
+

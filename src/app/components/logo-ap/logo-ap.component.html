@@ -5,11 +5,20 @@
         </div>
         <div class="redes">
             <a href="https://www.linkedin.com/in/manuel-genoud-74148196/" target="_blank"><img src="../../../assets/linkedin.png" id="linkedin"></a>
+            
             <a href="https://twitter.com/GenoudManuel" target="_blank"><img src="../../../assets/twitter.png" id="twitter"></a>
+           
             <a href="https://www.instagram.com/maernoud/" target="_blank"><img src="../../../assets/instagram.png" id="instagram"></a>
+            
             <a href="https://github.com/maernoud" target="_blank"><img src="../../../assets/github.png" id="github"></a>
+            
             <a href="https://www.facebook.com/manuel.genoud.7/" target="_blank"><img src="../../../assets/facebook.png" id="facebook"></a>
-            <button type="button" class="btn btn-outline-light">INGRESO</button>
+            
+            <button type="button" class="btn btn-outline-light" (click)="logout()"  *ngIf="userLogged |async as user; else otherButton" >Salir</button>
+            
+            <ng-template #otherButton> <button type="button" class="btn btn-outline-light" (click)="ingresar()">Ingresar</button> </ng-template>
+            
+            <div *ngIf="userLogged |async as user"> {{user.email}} </div>
         </div>
     </div>
 </div>

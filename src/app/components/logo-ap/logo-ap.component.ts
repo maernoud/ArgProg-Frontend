@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-logo-ap',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoAPComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authservice : AuthService) { }
 
   ngOnInit(): void {
+  }
+
+    userLogged = this.authservice.getUserLogged();
+   
+
+   logueado() { this.authservice.getUserLogged().subscribe(res =>{
+     console.log(res?.email)
+   });
+   }
+  ingresar(){ 
+    this.authservice.ingresarbutton();
+
+  }
+  logout(){
+    this.authservice.logout();
   }
 
 }
