@@ -7,3 +7,22 @@ div{
 h1, h3{
     display: inline;
 }
+.item-list{
+    display: flex;
+    align-items: flex-start;
+}
+
+.title-list{
+    padding-right: 70%;
+}
+.editable{
+    display: flex;
+}
+.fa {
+    color: black;
+  
+}
+
+.fa-solid {
+    color: black;
+}

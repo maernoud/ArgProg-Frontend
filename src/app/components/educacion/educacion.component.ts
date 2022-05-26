@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducacionComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  
+  }
 
   ngOnInit(): void {
+  }
+
+  cambiar_parrafo(){
+    document.getElementById("editText")!.style.display="block";
+    let texto = document.getElementById("texto")!.innerText;
+    console.log(texto)
+  };
+
+  text_change(value : string){
+    document.getElementById("texto")!.innerText=value;
   }
 
 }

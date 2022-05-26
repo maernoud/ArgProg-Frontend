@@ -13,3 +13,22 @@
     box-shadow: 10px 10px 30px #000000;
     box-shadow: ejeX ejeY difumasion color;
 }
+.item-list{
+    display: flex;
+    align-items: flex-start;
+}
+
+.title-list{
+    padding-right: 70%;
+}
+.editable{
+    display: flex;
+}
+.fa {
+    color: black;
+  
+}
+
+.fa-solid {
+    color: black;
+}
