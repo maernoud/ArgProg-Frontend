@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,11 +9,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class AuthService {
-  
+  currentUserSubjectg:BehaviorSubject<any>
   public ingresare = false;
   public logueado = this.getUserLogged()
   public logueadoNot = !this.logueado
-  constructor(private afauth: AngularFireAuth) { 
+  
+  constructor(private afauth: AngularFireAuth, private http:HttpClient) { 
+    this.currentUserSubjectg= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
     }
 
   async login(email:string,password:string){

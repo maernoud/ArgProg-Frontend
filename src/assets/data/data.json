@@ -1,0 +1,58 @@
+{
+    "name": "Manuel E. Genoud",
+    "backimage" : "",
+    "image":"",
+    "position": "Programador Web Fullstack Jr",
+    "company" : {
+        "name": "",
+        "img" : "",
+        "url": "#"
+    },
+
+    "ubication" : "Córdoba (Argentina)",
+    "about" : "Estudiante avanzado de la Carrera de Psicología, formandome en programación web fullstack y python. Curioso por naturaleza y siempre interesado en aprender. Actualmente viviendo en la ciudad de Unquillo de la provincia de Córdoba.",
+    
+    "education":[
+        { "school": "Universidad Nacional de Córdoba",
+           "carreer": "Licenciatura en Psicología", 
+        "img" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Universidad_Nacional_de_C%C3%B3rdoba.png/200px-Universidad_Nacional_de_C%C3%B3rdoba.png",
+        "url":"https://www.unc.edu.ar/",
+        "years" : "2009 - "
+        },
+        { "school": "Massachusetts Institute of Technology",
+            "carreer": "Introduction to Python Programming",
+        "img" : "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/245px-MIT_logo.svg.png",
+        "url":"https://www.mit.edu/",
+        "years" : "2021"
+        },
+        { "school": "Mundos E",
+            "carreer": "Programación Web FullStack",
+        "img" : "https://www.mundose.com/wp-content/uploads/2020/07/mundos-e-logo-1.png",
+        "url":"https://www.mundose.com/",
+        "years" : "2021-2022"
+        }        
+    ],
+
+    "experiencia" :[
+        { "company": "Freiberg S.A.C.I.",
+            "position": "Analista de Logística", 
+         "img" : "https://www.freiberg.com.ar/img/logo.png",
+         "url":"https://www.freiberg.com.ar/",
+         "years" : "2016 - 2018"
+         },
+        { "company": "Facultad de Psicología UNC",
+            "position": "Encargado de Espacios de uso Estudiantil", 
+         "img" : "https://psicologia.unc.edu.ar/wp-content/uploads/2022/02/PSICO-ISOLOGO-x1.png",
+         "url":"https://psicologia.unc.edu.ar/",
+         "years" : "2009 - 2014 "
+         },
+        { "company": "ActionLine S.R.L",
+            "position": "Mantenimiento de Sistemas", 
+         "img" : "https://actionline.com.br/wp-content/themes/actionlinenew/images/logoActionline.svg",
+         "url":"https://actionline.com.br/es/",
+         "years" : "2006 - 2008"
+         }
+    ]
+
+    
+}

@@ -13,7 +13,7 @@ div{
         border-radius: 100%;
         box-shadow: 3px 3px 3px grey;
         left: 3%;
-        top:600px;
+        top:300px;
     }
 }
 @media (max-width: 575px){

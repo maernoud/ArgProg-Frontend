@@ -1,36 +1,41 @@
 <div class="row">
     <h1>Experiencia laboral</h1>
-    <div class="col-lg-1"></div>
+  
     <div class="col-lg-11">
         <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Trabajo 1</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
+            <li *ngFor="let experiencia of experienciaList" class = "item">
+                
+                <div class= "data-container">
+                    <div class = "logo-image-container">
+                       <a [href]="experiencia?.url" target="_blank"> <img [src]="experiencia?.img"/></a>
+                    </div>
+                    <div class = "buttons" *ngIf="userLogged |async as user"><div class="btn-edit p-2" onclick="cambiar_parrafo()">
+                        <a href="#" class="btn-right">
+                            <i class="fa fa-pen"></i>
+                        </a>
+                    </div>
+                    <div class="btn-edit p-2">
+                        <a href="#" class="btn-right">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
-        </ul>
-        <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Trabajo 2</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
-        </ul>
-        <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Trabajo 3</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
+
+                        <h2>{{experiencia?.company}}</h2>  <h3>{{experiencia?.years}}</h3>
+                        <p>{{experiencia?.position}}</p>
+                        <div class = "editable">
+                            
+                           
+                                <input id = "editText" 
+                                type="text" 
+                                oninput="text_change(this.value)"  
+                                style = "display: none">
+                            
+                        </div>
+                
+            
+            </li>
         </ul>
     </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-proyecto',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProyectoComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private datosPortfolio : PortfolioService, private authservice : AuthService) { }
+  
+  userLogged = this.authservice.getUserLogged();
   ngOnInit(): void {
   }
 

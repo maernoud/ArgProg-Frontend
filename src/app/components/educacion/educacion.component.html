@@ -1,47 +1,59 @@
 
-
 <div class="row">
-    <h1>Educacion</h1>
-    <div class="col-lg-1"></div>
+    <h1>Educación</h1>
+    
     <div class="col-lg-11">
-        
-        
+             
         <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Estudio 1</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2" onclick="cambiar_parrafo()">
-                        <a href="#" class="btn-right">
-                            <i class="fa fa-pen"></i>
-                        </a>
+            <li *ngFor="let educacion of educacionList" class = "item">
+                
+                    <div class= "data-container">
+                        <div class = "logo-image-container">
+                           <a [href]="educacion?.url" target="_blank"> <img [src]="educacion?.img"/></a>
+                        </div>
+                        <div class = "buttons" *ngIf="userLogged |async as user"><div class="btn-edit p-2" onclick="cambiar_parrafo()">
+                            <a href="#" class="btn-right">
+                                <i class="fa fa-pen"></i>
+                            </a>
+                        </div>
+                        <div class="btn-edit p-2">
+                            <a href="#" class="btn-right">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </div>
+                        </div>
                     </div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
-                </div>
-            </div>
-            <p id="texto">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
-            <div>
-             <input id = "editText" type="text" oninput="text_change(this.value)"  style = "display: block" >
-            </div>
-        </ul>
-        <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Estudio 2</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
-        </ul>
-        <ul>
-            <div class = "item-list">
-                <li class="title-list"><h1>Estudio 3</h1> - <h3>(years)</h3></li>
-                <div class = "editable">
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
-                    <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam atque fuga asperiores sit, esse debitis illum. Laboriosam quos, perspiciatis deserunt sequi nulla officiis aspernatur cum, consectetur, error veniam excepturi laudantium.</p>
+
+                            <h2>{{educacion?.school}}</h2>  <h3>{{educacion?.years}}</h3>
+                            <p>{{educacion?.carreer}}</p>
+                            <div class = "editable">
+                                
+                               
+                                    <input id = "editText" 
+                                    type="text" 
+                                    oninput="text_change(this.value)"  
+                                    style = "display: none">
+                                
+                            </div>
+                    
+                
+                </li>
+            
+           
         </ul>
     </div>
 </div>
+
+<!-- <script>
+function cambiar_parrafo(){
+    document.getElementById("editText").style.display="block";
+    let texto = document.getElementById("texto").innerText;
+    console.log(texto)
+  };
+
+  function text_change(value){
+    document.getElementById("texto").innerText=value;
+  }
+
+
+</script> -->

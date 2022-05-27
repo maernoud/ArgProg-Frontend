@@ -1,5 +1,9 @@
 .row{
     padding: 20px;
+    margin: 2%;
+    border:4px;
+    border-radius: 25px;
+    
 }
 div{
     background: #a1b5cb;
@@ -7,14 +11,26 @@ div{
 h1, h3{
     display: inline;
 }
-.item-list{
+/* /* .item-list{
     display: flex;
-    align-items: flex-start;
-}
+    align-items: center;
+} */
 
+.item{
+    padding-bottom: 3em;
+}
+.data-container{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+}
+.buttons{
+    display: flex;
+}
 .title-list{
     padding-right: 70%;
-}
+} */
 .editable{
     display: flex;
 }

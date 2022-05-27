@@ -1,6 +1,9 @@
 .row{
     padding: 20px;
     background-color: #a1b5cb;
+    margin: 2%;
+    border:4px;
+    border-radius: 25px;
 }
 .contenedor{
     width: auto;

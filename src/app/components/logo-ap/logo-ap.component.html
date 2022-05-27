@@ -18,7 +18,7 @@
             
             <ng-template #otherButton> <button type="button" class="btn btn-outline-light" (click)="ingresar()">Ingresar</button> </ng-template>
             
-            <div *ngIf="userLogged |async as user"> {{user.email}} </div>
+            <div *ngIf="userLogged |async as user" style="color :white"> {{user.email}} </div>
         </div>
     </div>
 </div>

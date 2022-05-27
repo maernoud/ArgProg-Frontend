@@ -6,7 +6,7 @@
                 <ul>
                 <div class = "item-list">
                     <li class="title-list"><h1>Encriptador</h1></li>
-                    <div class = "editable">
+                    <div class = "buttons" *ngIf="userLogged |async as user">
                         <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
                         <div class="btn-edit p-2"><a href="#" class="btn-right"><i class="fa-solid fa-xmark"></i></a></div>
                     </div>
