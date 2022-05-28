@@ -12,7 +12,7 @@
         
     </div>
     <form class = "formulario "id="agregarEducacion" style="display: none;"  >
-         <!-- retirado a ver que pasa #educPost = "ngForm" (ngSubmit)="onSubmit(educPost)" -->
+        
         
         <div class="formulario">
             <label >Logo link</label>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                             <!-- Agregar Id para poder identificar -->
-
+                            <h3 style="display: none;">{{educacion?.id}}</h3>
                             <h2>{{educacion?.school}}</h2>  <h3>{{educacion?.years}}</h3>
                             <p>{{educacion?.carreer}}</p>
                             <div id = "{{'editable' +i}}" style="display: none;">

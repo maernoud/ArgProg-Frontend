@@ -1,39 +1,135 @@
 <div class="row">
     <div id="agregadoEx">
         <h1>Experiencia laboral</h1>
-        <div class = "buttons" *ngIf="userLogged |async as user"><a href="#" class="btn-right"><i class="fa-solid fa-circle-plus"></i></a></div>
+        <div class = "buttons" *ngIf="userLogged |async as user">
+            <div (click)="formularioAgregar();">
+                <a href="#agregadoEx" class="btn-right">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </a>
+            </div>
+        </div>
     </div>
+    <form class = "formulario "id="agregarExperiencia" style="display: none;"  >
+        
+        
+        <div class="formulario">
+            <label >Logo link</label>
+            <input 
+                type="text" 
+                id="logoEx" 
+                placeholder="http://www.esto_es_una_imagen.com/logo.png"
+                ngModel
+                required>
+                <br>
+            <label >Url Empresa</label>
+            <input 
+                type="text" 
+                id="urlEx" 
+                placeholder="http://www.esto_es_la_url.com"
+                ngModel
+                required>
+                <br>
+            <label >Empresa</label>
+            <input 
+                type="text" 
+                id="empresaEx" 
+                placeholder="Ej. Google"
+                ngModel
+                required>
+                <br>
+            <label>Posición</label>
+            <input 
+                type="text" 
+                id="posicionEx" 
+                placeholder="Ej. Analista de datos"
+                ngModel
+                required>
+                <br>
+            <label>Años</label>
+            <input 
+                type="text" 
+                id="yearsEx" 
+                placeholder="xxxx - xxxx"
+                ngModel
+                required>
+                <br>
+            <button type="submit" (click)="crear_experiencia()">Crear</button>  
+        </div>  
+    </form>
     <div class="col-lg-11">
         <ul>
-            <li *ngFor="let experiencia of experienciaList" class = "item">
+            <li *ngFor="let experiencia of experienciaList; let i = index" class = "item">
                 
-                <div class= "data-container">
+                <div id= "{{'there'+i}}"class= "data-container">
                     <div class = "logo-image-container">
                        <a [href]="experiencia?.url" target="_blank"> <img [src]="experiencia?.img"/></a>
                     </div>
-                    <div class = "buttons" *ngIf="userLogged |async as user"><div class="btn-edit p-2" onclick="cambiar_parrafo()">
-                        <a href="#" class="btn-right">
-                            <i class="fa fa-pen"></i>
-                        </a>
+                    <div class = "buttons" *ngIf="userLogged |async as user"><div class="btn-edit p-2" >
+                        <div (click)="cambiar_parrafo(i)">
+                            <a href="{{'#there'+i}}" class="btn-right">
+                                <i class="fa fa-pen"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="btn-edit p-2">
-                        <a href="#" class="btn-right">
-                            <i class="fa-solid fa-xmark"></i>
-                        </a>
+                        <div (click)="borrar_parrafo(i)">
+                            <a href="{{'#there'+i}}" class="btn-right">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </div>
                     </div>
                     </div>
                 </div>
-
+                        <h3 style="display: none;" id = "{{'idEx'+i}}">{{experiencia?.id}}</h3>
                         <h2>{{experiencia?.company}}</h2>  <h3>{{experiencia?.years}}</h3>
                         <p>{{experiencia?.position}}</p>
-                        <div class = "editable">
-                            
-                           
-                                <input id = "editTextEx" 
-                                type="text" 
-                                oninput="text_change(this.value)"  
-                                style = "display: none">
-                            
+                        <div id = "{{'editableEx' +i}}" style = "display: none;">
+                            <form class = "formulario ">
+                                <div class="formulario">
+                                    <label >Logo link</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'logoEx'+i}}" 
+                                        
+                                        placeholder="http://www.esto_es_una_imagen.com/logo.png"
+                                        required>
+                                        <br>
+                                    
+                                    <label >Url Empresa</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'urlEx'+i}}" 
+                                         
+                                        placeholder="http://www.esto_es_la_url.com"
+                                        required>
+                                        <br>
+                                    
+                                    <label >Empresa</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'institucionEx'+i}}" 
+                                        
+                                        placeholder="Ej. Google"
+                                        required>
+                                        <br>
+                                    <label>Posición</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'PosicionEx'+i}}" 
+                                        placeholder="Ej. Analista de Datos"
+                                        required>
+                                        <br>
+                                    <label>Años</label>
+                                    <input 
+                                        type="text" 
+                                        id="{{'yearsEx'+i}}"
+                                        name="Años" 
+                                        placeholder="xxxx - xxxx"
+                                        required>
+                                        <br>
+                                    <button type="submit" id = "{{'buttonUpdateEx' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
+                                </div>  
+                            </form>
                         </div>
                 
             
