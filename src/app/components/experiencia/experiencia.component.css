@@ -4,6 +4,12 @@
     border:4px;
     border-radius: 25px;
 }
+#agregadoEx{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+}
 div{
     background: #a1b5cb;
 }
@@ -29,7 +35,7 @@ h1, h3{
 }
 .title-list{
     padding-right: 70%;
-} */
+} 
 .editable{
     display: flex;
 }

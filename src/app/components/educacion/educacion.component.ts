@@ -20,14 +20,48 @@ export class EducacionComponent implements OnInit {
   }
   userLogged = this.authservice.getUserLogged();
 
-  cambiar_parrafo(){
-    document.getElementById("editText")!.style.display="block";
-    let texto = document.getElementById("texto")!.innerText;
-    console.log(texto)
-  };
-
-  text_change(value : string){
-    document.getElementById("texto")!.innerText=value;
+  formularioAgregar(){
+    
+    console.log("funcion formularioAgregar llamada")
+    document.getElementById("agregarEducacion")!.style.display = "block";
   }
 
+  crear_educacion(){
+    const img = (<HTMLInputElement>document.getElementById("logo"))?.value;
+    const url = (<HTMLInputElement>document.getElementById("url"))?.value;
+    const inst = (<HTMLInputElement>document.getElementById("institucion"))?.value;
+    const car = (<HTMLInputElement>document.getElementById("carrera"))?.value;
+    const year = (<HTMLInputElement>document.getElementById("years"))?.value;
+    (<HTMLInputElement>document.getElementById("agregarEducacion"))!.style.display = "none";
+    const f = JSON.stringify({"school": inst, "carreer": car, "img" : img, "url":url,"years" : year})
+    // data: {data : f}
+    
+    console.log("llamada funcion crear educacion")
+    console.log(f);
+  }
+
+  cambiar_parrafo(i : number){
+    document.getElementById("editable" + i)!.style.display = "block";
+    console.log("llamada funcion cambiar_parrafo")
+  };
+  actualizar_datos(i:number){
+    const img = (<HTMLInputElement>document.getElementById("logo"+i))?.value;
+    const url = (<HTMLInputElement>document.getElementById("url"+i))?.value;
+    const inst = (<HTMLInputElement>document.getElementById("institucion"+i))?.value;
+    const car = (<HTMLInputElement>document.getElementById("carrera"+i))?.value;
+    const year = (<HTMLInputElement>document.getElementById("años"+i))?.value;
+    const f = JSON.stringify({"school": inst, "carreer": car, "img" : img, "url":url,"years" : year})
+    // data: {data : f}
+    document.getElementById("editable" + i)!.style.display = "none";
+    console.log(f);
+  }
+  borrar_parrafo(i : number){
+    
+  }
+
+  // text_change(value : string){
+  //   document.getElementById("texto")!.innerText=value;
+  // }
+
+  
 }

@@ -11,5 +11,15 @@ export class PortfolioService {
 
   obtenerDatos(): Observable<any>{
     return this.http.get('./assets/data/data.json');
+    //return this.http.get('https://arg-prog-backend.herokuapp.com/about/traer');
+  }
+  obtenerEducacion(): Observable<any>{
+    return this.http.get('https://arg-prog-backend.herokuapp.com/educacion/traer');
+  }
+  obtenerExperiencia(): Observable<any>{
+    return this.http.get('https://arg-prog-backend.herokuapp.com/experiencia/traer');
+  }
+  obtenerProyectos(): Observable<any>{
+    return this.http.get('https://arg-prog-backend.herokuapp.com/proyectos/traer');
   }
 }

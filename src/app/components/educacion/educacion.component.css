@@ -5,6 +5,12 @@
     border-radius: 25px;
     
 }
+#agregado{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+}
 div{
     background: #a1b5cb;
 }
@@ -30,7 +36,7 @@ h1, h3{
 }
 .title-list{
     padding-right: 70%;
-} */
+} 
 .editable{
     display: flex;
 }
@@ -41,4 +47,13 @@ h1, h3{
 
 .fa-solid {
     color: black;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+    padding: 3px;
+    margin: 2px;
 }

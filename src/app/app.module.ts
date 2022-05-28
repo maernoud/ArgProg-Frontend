@@ -18,6 +18,21 @@ import { LoginComponent } from './components/login/login.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import {HttpClientModule} from '@angular/common/http';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDbIVEsDvRBuV5wdixeyLwi-7x4EhvNPzo",
+  authDomain: "argentina-programa-adceb.firebaseapp.com",
+  projectId: "argentina-programa-adceb",
+  storageBucket: "argentina-programa-adceb.appspot.com",
+  messagingSenderId: "904845633714",
+  appId: "1:904845633714:web:1f9f7385f7f9eb58b941ab",
+  measurementId: "G-6129G6J08H"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 @NgModule({
   declarations: [
@@ -39,7 +54,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     NgCircleProgressModule.forRoot({}),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     HttpClientModule
   ],
   providers: [],

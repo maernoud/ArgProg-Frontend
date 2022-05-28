@@ -1,6 +1,8 @@
 <div class="row">
-    <h1>Experiencia laboral</h1>
-  
+    <div id="agregadoEx">
+        <h1>Experiencia laboral</h1>
+        <div class = "buttons" *ngIf="userLogged |async as user"><a href="#" class="btn-right"><i class="fa-solid fa-circle-plus"></i></a></div>
+    </div>
     <div class="col-lg-11">
         <ul>
             <li *ngFor="let experiencia of experienciaList" class = "item">
@@ -27,7 +29,7 @@
                         <div class = "editable">
                             
                            
-                                <input id = "editText" 
+                                <input id = "editTextEx" 
                                 type="text" 
                                 oninput="text_change(this.value)"  
                                 style = "display: none">

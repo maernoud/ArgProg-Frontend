@@ -1,38 +1,127 @@
 
 <div class="row">
-    <h1>Educación</h1>
-    
+    <div id="agregado">
+        <h1 id="educacion">Educación</h1>
+        <div class = "buttons" *ngIf="userLogged |async as user">
+            <div (click)= "formularioAgregar();"> 
+                <a href="#educacion" class="btn-right">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    <form class = "formulario "id="agregarEducacion" style="display: none;">
+        <div class="formulario">
+            <label >Logo link</label>
+            <input 
+                type="text" 
+                id="logo" 
+                placeholder="http://www.esto_es_una_imagen.com/logo.png">
+                <br>
+            <label >Url Institucion</label>
+            <input 
+                type="text" 
+                id="url" 
+                placeholder="http://www.esto_es_la_url.com">
+                <br>
+            <label >Institucion</label>
+            <input 
+                type="text" 
+                id="institucion" 
+                placeholder="Ej. Universidad Nacional de Córdoba">
+                <br>
+            <label>Carrera</label>
+            <input 
+                type="text" 
+                id="carrera" 
+                placeholder="Ej. Licenciatura en Psicologia">
+                <br>
+            <label>Años</label>
+            <input 
+                type="text" 
+                id="years" 
+                placeholder="xxxx - xxxx">
+                <br>
+            <button type="submit" (click)="crear_educacion()">Crear</button>  
+        </div>  
+    </form>
     <div class="col-lg-11">
              
         <ul>
-            <li *ngFor="let educacion of educacionList" class = "item">
+            <li *ngFor="let educacion of educacionList; let i = index" class = "item">
                 
-                    <div class= "data-container">
+                    <div id = "{{'here' + i}} " class= "data-container">
                         <div class = "logo-image-container">
                            <a [href]="educacion?.url" target="_blank"> <img [src]="educacion?.img"/></a>
                         </div>
-                        <div class = "buttons" *ngIf="userLogged |async as user"><div class="btn-edit p-2" onclick="cambiar_parrafo()">
-                            <a href="#" class="btn-right">
-                                <i class="fa fa-pen"></i>
-                            </a>
-                        </div>
-                        <div class="btn-edit p-2">
-                            <a href="#" class="btn-right">
-                                <i class="fa-solid fa-xmark"></i>
-                            </a>
-                        </div>
+                        <div class = "buttons" *ngIf="userLogged |async as user">
+                            <div (click)="cambiar_parrafo(i);">
+                                <a href="{{'#here'+i}}" class="btn-right">
+                                    <i class="fa fa-pen"></i>
+                                </a>
+                            </div>
+                            <div class="btn-edit p-2">
+                                <div (click)="borrar_parrafo(i);">
+                                    <a href="{{'#here'+i}}" class="btn-right">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                            <!-- Agregar Id para poder identificar -->
 
                             <h2>{{educacion?.school}}</h2>  <h3>{{educacion?.years}}</h3>
                             <p>{{educacion?.carreer}}</p>
-                            <div class = "editable">
+                            <div id = "{{'editable' +i}}" style="display: none;">
                                 
-                               
-                                    <input id = "editText" 
+                                <form class = "formulario ">
+                                    <div class="formulario">
+                                    <label >Logo link</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'logo'+i}}" 
+                                        name="logo" 
+                                        placeholder="http://www.esto_es_una_imagen.com/logo.png">
+                                        <br>
+                                    
+                                    <label >Url Institucion</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'url'+i}}" 
+                                        name="url" 
+                                        placeholder="http://www.esto_es_la_url.com">
+                                        <br>
+                                    
+                                    <label >Institucion</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'institucion'+i}}" 
+                                        name="Institucion" 
+                                        placeholder="Ej. Universidad Nacional de Córdoba">
+                                        <br>
+                                    <label>Carrera</label>
+                                    <input 
+                                        type="text" 
+                                        id= "{{'carrera'+i}}" 
+                                        name="Carrera" 
+                                        placeholder="Ej. Licenciatura en Psicologia">
+                                        <br>
+                                    <label>Años</label>
+                                    <input 
+                                        type="text" 
+                                        id="{{'years'+i}}"
+                                        name="Años" 
+                                        placeholder="xxxx - xxxx">
+                                        <br>
+                                    <button type="submit" id = "{{'buttonUpdate' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
+                                    </div>  
+                                </form>
+                                    <!-- <input id = "{{'editTextEd'+i}}" 
                                     type="text" 
                                     oninput="text_change(this.value)"  
-                                    style = "display: none">
+                                    > -->
                                 
                             </div>
                     

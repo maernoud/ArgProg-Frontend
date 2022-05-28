@@ -5,6 +5,12 @@
     border:4px;
     border-radius: 25px;
 }
+#agregadoPr{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+}
 .contenedor{
     width: auto;
 }
