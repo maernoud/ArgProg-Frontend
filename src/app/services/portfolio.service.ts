@@ -22,4 +22,6 @@ export class PortfolioService {
   obtenerProyectos(): Observable<any>{
     return this.http.get('https://arg-prog-backend.herokuapp.com/proyectos/traer');
   }
+
+  
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-educacion',
@@ -9,7 +11,9 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 })
 export class EducacionComponent implements OnInit {
   educacionList:any;
-  constructor(private datosPortfolio : PortfolioService, private authservice : AuthService) { 
+  postId:any
+  
+  constructor(private datosPortfolio : PortfolioService, private authservice : AuthService, private http:HttpClient) { 
   
   }
 
@@ -17,6 +21,7 @@ export class EducacionComponent implements OnInit {
     this.datosPortfolio.obtenerDatos().subscribe(data =>{
       this.educacionList = data.education;
     })
+ 
   }
   userLogged = this.authservice.getUserLogged();
 
@@ -25,7 +30,14 @@ export class EducacionComponent implements OnInit {
     console.log("funcion formularioAgregar llamada")
     document.getElementById("agregarEducacion")!.style.display = "block";
   }
-
+   
+  sendPostRequest(data: any): Observable<any> {
+    const requestOptions: Object = {
+      /* other options here */
+      responseType: 'text'
+    }
+    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/educacion/crear', data, requestOptions);
+  }
   crear_educacion(){
     const img = (<HTMLInputElement>document.getElementById("logo"))?.value;
     const url = (<HTMLInputElement>document.getElementById("url"))?.value;
@@ -33,11 +45,12 @@ export class EducacionComponent implements OnInit {
     const car = (<HTMLInputElement>document.getElementById("carrera"))?.value;
     const year = (<HTMLInputElement>document.getElementById("years"))?.value;
     (<HTMLInputElement>document.getElementById("agregarEducacion"))!.style.display = "none";
-    const f = JSON.stringify({"school": inst, "carreer": car, "img" : img, "url":url,"years" : year})
-    // data: {data : f}
+    const f = JSON.stringify({"school": inst, "career": car, "img" : img, "url":url,"years" : year})
+    const obj = JSON.parse(f)
     
     console.log("llamada funcion crear educacion")
-    console.log(f);
+   
+   this.sendPostRequest(obj).subscribe((res: any) => {})
   }
 
   cambiar_parrafo(i : number){
@@ -51,17 +64,13 @@ export class EducacionComponent implements OnInit {
     const car = (<HTMLInputElement>document.getElementById("carrera"+i))?.value;
     const year = (<HTMLInputElement>document.getElementById("años"+i))?.value;
     const f = JSON.stringify({"school": inst, "carreer": car, "img" : img, "url":url,"years" : year})
-    // data: {data : f}
-    document.getElementById("editable" + i)!.style.display = "none";
+   document.getElementById("editable" + i)!.style.display = "none";
     console.log(f);
   }
   borrar_parrafo(i : number){
     
   }
 
-  // text_change(value : string){
-  //   document.getElementById("texto")!.innerText=value;
-  // }
-
+ 
   
 }

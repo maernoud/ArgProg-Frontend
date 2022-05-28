@@ -11,37 +11,49 @@
         </div>
         
     </div>
-    <form class = "formulario "id="agregarEducacion" style="display: none;">
+    <form class = "formulario "id="agregarEducacion" style="display: none;"  >
+         <!-- retirado a ver que pasa #educPost = "ngForm" (ngSubmit)="onSubmit(educPost)" -->
+        
         <div class="formulario">
             <label >Logo link</label>
             <input 
                 type="text" 
                 id="logo" 
-                placeholder="http://www.esto_es_una_imagen.com/logo.png">
+                placeholder="http://www.esto_es_una_imagen.com/logo.png"
+                ngModel
+                required>
                 <br>
             <label >Url Institucion</label>
             <input 
                 type="text" 
                 id="url" 
-                placeholder="http://www.esto_es_la_url.com">
+                placeholder="http://www.esto_es_la_url.com"
+                ngModel
+                required>
                 <br>
             <label >Institucion</label>
             <input 
                 type="text" 
                 id="institucion" 
-                placeholder="Ej. Universidad Nacional de Córdoba">
+                placeholder="Ej. Universidad Nacional de Córdoba"
+                ngModel
+                required>
                 <br>
             <label>Carrera</label>
             <input 
                 type="text" 
                 id="carrera" 
-                placeholder="Ej. Licenciatura en Psicologia">
+                placeholder="Ej. Licenciatura en Psicologia"
+                ngModel
+                required>
                 <br>
             <label>Años</label>
             <input 
                 type="text" 
                 id="years" 
-                placeholder="xxxx - xxxx">
+                placeholder="xxxx - xxxx"
+                ngModel
+                required>
                 <br>
             <button type="submit" (click)="crear_educacion()">Crear</button>  
         </div>  
@@ -78,50 +90,52 @@
                                 
                                 <form class = "formulario ">
                                     <div class="formulario">
-                                    <label >Logo link</label>
-                                    <input 
-                                        type="text" 
-                                        id= "{{'logo'+i}}" 
-                                        name="logo" 
-                                        placeholder="http://www.esto_es_una_imagen.com/logo.png">
-                                        <br>
-                                    
-                                    <label >Url Institucion</label>
-                                    <input 
-                                        type="text" 
-                                        id= "{{'url'+i}}" 
-                                        name="url" 
-                                        placeholder="http://www.esto_es_la_url.com">
-                                        <br>
-                                    
-                                    <label >Institucion</label>
-                                    <input 
-                                        type="text" 
-                                        id= "{{'institucion'+i}}" 
-                                        name="Institucion" 
-                                        placeholder="Ej. Universidad Nacional de Córdoba">
-                                        <br>
-                                    <label>Carrera</label>
-                                    <input 
-                                        type="text" 
-                                        id= "{{'carrera'+i}}" 
-                                        name="Carrera" 
-                                        placeholder="Ej. Licenciatura en Psicologia">
-                                        <br>
-                                    <label>Años</label>
-                                    <input 
-                                        type="text" 
-                                        id="{{'years'+i}}"
-                                        name="Años" 
-                                        placeholder="xxxx - xxxx">
-                                        <br>
-                                    <button type="submit" id = "{{'buttonUpdate' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
+                                        <label >Logo link</label>
+                                        <input 
+                                            type="text" 
+                                            id= "{{'logo'+i}}" 
+                                            name="logo" 
+                                            placeholder="http://www.esto_es_una_imagen.com/logo.png"
+                                            required>
+                                            <br>
+                                        
+                                        <label >Url Institucion</label>
+                                        <input 
+                                            type="text" 
+                                            id= "{{'url'+i}}" 
+                                            name="url" 
+                                            placeholder="http://www.esto_es_la_url.com"
+                                            required>
+                                            <br>
+                                        
+                                        <label >Institucion</label>
+                                        <input 
+                                            type="text" 
+                                            id= "{{'institucion'+i}}" 
+                                            name="Institucion" 
+                                            placeholder="Ej. Universidad Nacional de Córdoba"
+                                            required>
+                                            <br>
+                                        <label>Carrera</label>
+                                        <input 
+                                            type="text" 
+                                            id= "{{'carrera'+i}}" 
+                                            name="Carrera" 
+                                            placeholder="Ej. Licenciatura en Psicologia"
+                                            required>
+                                            <br>
+                                        <label>Años</label>
+                                        <input 
+                                            type="text" 
+                                            id="{{'years'+i}}"
+                                            name="Años" 
+                                            placeholder="xxxx - xxxx"
+                                            required>
+                                            <br>
+                                        <button type="submit" id = "{{'buttonUpdate' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
                                     </div>  
                                 </form>
-                                    <!-- <input id = "{{'editTextEd'+i}}" 
-                                    type="text" 
-                                    oninput="text_change(this.value)"  
-                                    > -->
+                                    
                                 
                             </div>
                     
@@ -133,16 +147,3 @@
     </div>
 </div>
 
-<!-- <script>
-function cambiar_parrafo(){
-    document.getElementById("editText").style.display="block";
-    let texto = document.getElementById("texto").innerText;
-    console.log(texto)
-  };
-
-  function text_change(value){
-    document.getElementById("texto").innerText=value;
-  }
-
-
-</script> -->

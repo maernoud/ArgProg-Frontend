@@ -14,19 +14,19 @@
     
     "education":[
         { "school": "Universidad Nacional de Córdoba",
-           "carreer": "Licenciatura en Psicología", 
+           "career": "Licenciatura en Psicología", 
         "img" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Universidad_Nacional_de_C%C3%B3rdoba.png/200px-Universidad_Nacional_de_C%C3%B3rdoba.png",
         "url":"https://www.unc.edu.ar/",
         "years" : "2009 - "
         },
         { "school": "Massachusetts Institute of Technology",
-            "carreer": "Introduction to Python Programming",
+            "career": "Introduction to Python Programming",
         "img" : "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/245px-MIT_logo.svg.png",
         "url":"https://www.mit.edu/",
         "years" : "2021"
         },
         { "school": "Mundos E",
-            "carreer": "Programación Web FullStack",
+            "career": "Programación Web FullStack",
         "img" : "https://www.mundose.com/wp-content/uploads/2020/07/mundos-e-logo-1.png",
         "url":"https://www.mundose.com/",
         "years" : "2021-2022"
