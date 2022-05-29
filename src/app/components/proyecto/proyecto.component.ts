@@ -34,16 +34,13 @@ export class ProyectoComponent implements OnInit {
     return this.http.post<any>('https://arg-prog-backend.herokuapp.com/proyecto/crear', data, requestOptions);
   }
   crear_proyecto(){
-    const img = (<HTMLInputElement>document.getElementById("logo"))?.value;
-    const url = (<HTMLInputElement>document.getElementById("url"))?.value;
-    const inst = (<HTMLInputElement>document.getElementById("institucion"))?.value;
-    const car = (<HTMLInputElement>document.getElementById("carrera"))?.value;
-    const year = (<HTMLInputElement>document.getElementById("years"))?.value;
-    (<HTMLInputElement>document.getElementById("agregarEducacion"))!.style.display = "none";
-    const f = JSON.stringify({"school": inst, "career": car, "img" : img, "url":url,"years" : year})
+    const img = (<HTMLInputElement>document.getElementById("logoPr"))?.value;
+    const url = (<HTMLInputElement>document.getElementById("urlPr"))?.value;
+    const title = (<HTMLInputElement>document.getElementById("nombrePr"))?.value;
+    const des = (<HTMLInputElement>document.getElementById("descripcionPr"))?.value;
+    const f = JSON.stringify({"title": title , "description": des, "img" : img, "url":url})
     const obj = JSON.parse(f)
-    
-    //console.log("llamada funcion crear educacion")
+   //console.log("llamada funcion crear educacion")
    
    this.sendPostRequest(obj).subscribe((res: any) => {})
   }
@@ -57,7 +54,7 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/educacion/editar/'+id, data, requestOptions);
+    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/proyecto/editar/'+id, data, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoPr"+i))?.value;
@@ -76,10 +73,10 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.delete<any>('https://arg-prog-backend.herokuapp.com/educacion/borrar/'+id, requestOptions);
+    return this.http.delete<any>('https://arg-prog-backend.herokuapp.com/proyecto/borrar/'+id, requestOptions);
   }
   borrar_parrafo(i : number){
-    const id =(<HTMLInputElement>document.getElementById("id"+i))?.value;
+    const id =(<HTMLInputElement>document.getElementById("idPr"+i))?.value;
     this.sendDeleteRequest(id).subscribe((res:any)=>{});
   }
 

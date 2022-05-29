@@ -23,7 +23,7 @@ export class AcercaDeComponent implements OnInit {
   cambiar_parrafo(){
     document.getElementById("editableAb")!.style.display = "block";
 
-    console.log("llamada funcion cambiar_parrafo")
+    //console.log("llamada funcion cambiar_parrafo")
   };
 
   sendPutRequest(data: any): Observable<any> {
