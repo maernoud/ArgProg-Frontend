@@ -6,6 +6,48 @@
     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
         <p id="nombre">{{miPortfolio?.name}}</p>
         <p>{{miPortfolio?.position}}</p>
+        
+            <div class = "buttons" *ngIf="userLogged |async as user">
+                <div class="btn-edit p-2" >
+                    <div (click)="cambiar_parrafo()">
+                        <a href="#nombre" class="btn-right">
+                            <i class="fa fa-pen"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id = "editableAb" style = "display: none;">
+                <form class = "formulario ">
+                    <div class="formulario">
+                        <label >Foto link</label>
+                        <input 
+                            type="text" 
+                            id= "fotoAb" 
+                            
+                            placeholder="http://www.esto_es_una_imagen.com/logo.png"
+                            required>
+                            <br>
+                        
+                        <label >Posición</label>
+                        <input 
+                            type="text" 
+                            id= "posicionAb" 
+                             
+                            placeholder="Rol Actual"
+                            required>
+                            <br>
+                        
+                        <label >Acerca de</label>
+                        <input 
+                            type="text" 
+                            id= "acercaDe" 
+                            
+                            placeholder="Descripcion Corta"
+                            required>
+                        <button type="submit" id = "updateAb" (click)="actualizar_datos()">Actualizar</button> 
+                    </div>
+                </form>
+            </div>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <span>

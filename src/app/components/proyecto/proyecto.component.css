@@ -11,9 +11,9 @@
     align-content: flex-end;
     justify-content: space-between;
 }
-.contenedor{
+/* .contenedor{
     width: auto;
-}
+} */
 .parte1, .parte2{
     display: inline-block;
     text-align: justify;
@@ -40,4 +40,27 @@
 
 .fa-solid {
     color: black;
+}
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+    padding: 3px;
+    margin: 2px;
+}
+.submit{
+    background-color: white;
+  color: black;
+  border: 2px solid #4CAF50; 
+  border-radius: 12px;
+}
+.data-container{
+    display: flex;
+    align-items: flex-end;
+   
+    justify-content: space-between;
 }

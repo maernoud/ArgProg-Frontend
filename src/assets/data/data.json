@@ -52,7 +52,19 @@
          "url":"https://actionline.com.br/es/",
          "years" : "2006 - 2008"
          }
-    ]
+    ],
 
+    "proyecto":[
+        {"id" : "1",
+        "title": "Encriptador",
+
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cum quo, nisi consequuntur, rerum, praesentium et nostrum eius reiciendis obcaecati at recusandae tempora cumque sint quae! Consequatur ipsa aspernatur nulla!",
+        "img": "https://www.pchardwarepro.com/wp-content/uploads/2019/06/VSENCRYPT.png",
+        "url" : "https://github.com/diegofdg/encriptador_de_texto.git"
+        }
+
+
+
+    ]
     
 }

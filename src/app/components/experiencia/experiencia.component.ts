@@ -57,7 +57,7 @@ export class ExperienciaComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/experiencia/editar/'+id, data, requestOptions);
+    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/experiencia/editar/${id}`, data, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoEx"+i))?.value;
@@ -77,7 +77,7 @@ export class ExperienciaComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.delete<any>('https://arg-prog-backend.herokuapp.com/experiencia/borrar/'+id, requestOptions);
+    return this.http.delete<any>(`https://arg-prog-backend.herokuapp.com/experiencia/borrar/${id}`, requestOptions);
   }
   borrar_parrafo(i : number){
     const id =(<HTMLInputElement>document.getElementById("idEx"+i))?.value;

@@ -3,7 +3,7 @@
 }
 div{
     background-color: #1767bd;
-    text-align: center;
+    
 }
 /*Estilo de la foto de perfil*/
 @media (min-width: 576px){
@@ -31,4 +31,21 @@ div{
 #nombre{
     font-weight: bold;
     margin-top: 30%;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+    padding: 3px;
+    margin: 2px;
+}
+.fa {
+    color: black;
+  
+}
+
+.fa-solid {
+    color: black;
 }
