@@ -10,20 +10,31 @@ import { Observable } from 'rxjs';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  miPortfolio:any;
+  about :any
+  position: any
+  aboutList:any;
+  
+
   constructor(private datosPortfolio: PortfolioService,private authservice : AuthService,private http:HttpClient) { }
   userLogged = this.authservice.getUserLogged();
   ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      // console.log(data)
-      this.miPortfolio = data;
-    });
+      this.aboutList = data;
+     
+      this.about = data[0].about
+      this.position=data[0].position
+      console.log(this.about)
+    })
+  //   this.about = this.miPortfolio.about;
+  //  this.position = this.miPortfolio.position;
+    
+    
   }
 
   cambiar_parrafo(){
     document.getElementById("editableAb")!.style.display = "block";
 
-    //console.log("llamada funcion cambiar_parrafo")
+    console.log(this.aboutList)
   };
 
   sendPutRequest(data: any): Observable<any> {

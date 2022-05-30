@@ -31,7 +31,7 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/proyecto/crear', data, requestOptions);
+    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/proyectos/crear', data, requestOptions);
   }
   crear_proyecto(){
     const img = (<HTMLInputElement>document.getElementById("logoPr"))?.value;
@@ -41,7 +41,8 @@ export class ProyectoComponent implements OnInit {
     const f = JSON.stringify({"title": title , "description": des, "img" : img, "url":url})
     const obj = JSON.parse(f)
    //console.log("llamada funcion crear educacion")
-   
+   (<HTMLInputElement>document.getElementById("agregarPr"))!.style.display = "none";
+   console.log(obj)
    this.sendPostRequest(obj).subscribe((res: any) => {this.ngOnInit()})
   }
 
@@ -54,7 +55,7 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/proyecto/editar/${id}`, data, requestOptions);
+    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/proyectos/editar/${id}`, data, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoPr"+i))?.value;
@@ -73,7 +74,7 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.delete<any>(`https://arg-prog-backend.herokuapp.com/proyecto/borrar/${id}`, requestOptions);
+    return this.http.delete<any>(`https://arg-prog-backend.herokuapp.com/proyectos/borrar/${id}`, requestOptions);
   }
   borrar_parrafo(i : number){
     
