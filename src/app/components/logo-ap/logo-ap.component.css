@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: blue;
+    background-color: rgb(28, 28, 212);
 }
 .redes{
     display: flex;
@@ -13,6 +13,9 @@
 }
 #logoAP{
     width: 150px;
+}
+.small_menu{
+    display: none;
 }
 img{
     width: 50px;
@@ -27,11 +30,19 @@ img{
         flex-direction: column;
     }
     .redes{
-        display: flex;
-        flex-direction: column;
+        display: none;
+       
         align-items: center;
     }
     .redes img{
         margin: 1em;
+    }
+    .small_menu{
+        display: flex;
+    }
+    container{
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(28, 28, 212);
     }
 }

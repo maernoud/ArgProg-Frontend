@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -37,12 +37,18 @@ export class AcercaDeComponent implements OnInit {
     console.log(this.aboutList)
   };
 
-  sendPutRequest(data: any): Observable<any> {
+  sendPutRequest(img:any,pos:any,about:any): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/about/editar`, data, requestOptions);
+    const params = new HttpParams()
+      
+      .set("img", img)
+      .set("position",pos)
+      .set("about",about);
+      const httpParams =params.toString()
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/about/editar/26?`+httpParams,requestOptions);
   }
   actualizar_datos(){
     const img = (<HTMLInputElement>document.getElementById("fotoAb"))?.value;
@@ -51,7 +57,7 @@ export class AcercaDeComponent implements OnInit {
     const f = JSON.stringify({"img":img, "position": pos, "about" : about})
     const obj = JSON.parse(f)
    document.getElementById("editableAb")!.style.display = "none";
-   this.sendPutRequest(obj).subscribe((res: any) => {})
+   this.sendPutRequest(img,pos,about).subscribe((res: any) => {})
     //console.log(obj);
   }
 

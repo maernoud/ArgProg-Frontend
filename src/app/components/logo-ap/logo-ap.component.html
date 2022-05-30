@@ -20,6 +20,14 @@
             
             <div *ngIf="userLogged |async as user" style="color :white"> {{user.email}} </div>
         </div>
+        <div class = "small_menu">
+
+            <a href="https://github.com/maernoud" target="_blank"><img src="../../../assets/github.png" id="github"></a>
+            <button type="button" class="btn btn-outline-light" (click)="logout()"  *ngIf="userLogged |async as user; else otherButton" >Salir</button>
+            
+            <ng-template #otherButton> <button type="button" class="btn btn-outline-light" (click)="ingresar()">Ingresar</button> </ng-template>
+
+        </div>
     </div>
 </div>
 

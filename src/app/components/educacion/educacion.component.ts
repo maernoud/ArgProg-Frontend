@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -59,12 +59,22 @@ export class EducacionComponent implements OnInit {
     document.getElementById("editable" + i)!.style.display = "block";
     console.log("llamada funcion cambiar_parrafo")
   };
-  sendPutRequest(data: any, id: number): Observable<any> {
+  sendPutRequest(inst:any,car:any,img:any,url:any,year:any, id: number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}`, data, requestOptions);
+    const params = new HttpParams()
+      .set('school', inst)
+      .set("career", car)
+      .set("img", img)
+      .set("url",url)
+      .set("years",year);
+      const httpParams =params.toString()
+     const directParams = ""+inst+"&"+car+"&"+img+"&"+url+"&"+year 
+    console.log(httpParams)
+
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}`+directParams, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logo"+i))?.value;
@@ -73,11 +83,11 @@ export class EducacionComponent implements OnInit {
     const car = (<HTMLInputElement>document.getElementById("carrera"+i))?.value;
     const year = (<HTMLInputElement>document.getElementById("years"+i))?.value;
     const id =i
-    const f = JSON.stringify({"id":id,"school": inst, "career": car, "img" : img, "url":url,"years" : year})
-    const obj = JSON.parse(f)
+    // const f = JSON.stringify({"id":id,"school": inst, "career": car, "img" : img, "url":url,"years" : year})
+    // const obj = JSON.parse(f)
    document.getElementById("editable" + i)!.style.display = "none";
-   console.log(obj);
-   this.sendPutRequest(obj, i).subscribe((res: any) => {this.ngOnInit()})
+  //  console.log(obj);
+   this.sendPutRequest(inst, car, img, url,year, i).subscribe((res: any) => {this.ngOnInit()})
     
   }
   sendDeleteRequest( id: number): Observable<any> {
