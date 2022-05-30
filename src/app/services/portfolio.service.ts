@@ -10,11 +10,12 @@ export class PortfolioService {
   constructor(private http:HttpClient) { }
 
   obtenerDatos(): Observable<any>{
-    return this.http.get('./assets/data/data.json');
-    //return this.http.get('https://arg-prog-backend.herokuapp.com/about/traer');
+    // return this.http.get('./assets/data/data.json');
+    return this.http.get('https://arg-prog-backend.herokuapp.com/about/traer');
   }
   obtenerEducacion(): Observable<any>{
     return this.http.get('https://arg-prog-backend.herokuapp.com/educacion/traer');
+    
   }
   obtenerExperiencia(): Observable<any>{
     return this.http.get('https://arg-prog-backend.herokuapp.com/experiencia/traer');

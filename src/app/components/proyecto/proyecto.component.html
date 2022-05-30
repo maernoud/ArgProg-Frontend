@@ -52,29 +52,29 @@
                 <ul>
                     <li *ngFor="let proyecto of proyectoList; let i = index" class = "item">
                         
-                            <div id = "{{'herePr' + i}} " class= "data-container">
+                            <div id = "{{'herePr' + proyecto.id}} " class= "data-container">
                                 
                                 <ul>
                                     <div class="col-sm-12 col-md-7 col-lg-7 parte1">
-                                        <div  class="item-list"><h3 style="display: none;" id = "{{'idPr'+i}}">{{proyecto?.id}}</h3> </div>
+                                        <div  class="item-list"><h3 style="display: none;" id = "{{proyecto.id}}">{{proyecto?.id}}</h3> </div>
                                         <h2>{{proyecto?.title}}</h2>
                                         <p>{{proyecto?.description}}</p>
                                     </div>
-                                    <div id= "{{'imgPr'+i}}" class="col-sm-12 col-md-3 col-lg-3 offset-md-1 offset-lg-1 parte2">
+                                    <div id= "{{'imgPr'+proyecto.id}}" class="col-sm-12 col-md-3 col-lg-3 offset-md-1 offset-lg-1 parte2">
                                         <a [href]="proyecto?.url" target="_blank"><img [src]="proyecto?.img" class="img-fluid img-proyecto" ></a>
                                         
                                     </div>
                                 </ul>
                                   
                                 <div class = "buttons" *ngIf="userLogged |async as user">
-                                    <div (click)="cambiar_parrafo(i);">
-                                        <a href="{{'#herePr'+i}}" class="btn-right">
+                                    <div (click)="cambiar_parrafo(proyecto.id);">
+                                        <a href="{{'#herePr'+proyecto.id}}" class="btn-right">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     </div>
                                     <div class="btn-edit p-2">
-                                        <div (click)="borrar_parrafo(i);">
-                                            <a href="{{'#herePr'+i}}" class="btn-right">
+                                        <div (click)="borrar_parrafo(proyecto.id);">
+                                            <a href="{{'#herePr'+proyecto.id}}" class="btn-right">
                                                 <i class="fa-solid fa-xmark"></i>
                                             </a>
                                         </div>
@@ -85,14 +85,14 @@
                                    
                                     
                                     
-                        <div id = "{{'editablePr' +i}}" style="display: none;">
+                        <div id = "{{'editablePr' +proyecto.id}}" style="display: none;">
                             
                             <form class = "formulario ">
                                 <div class="formulario">
                                     <label >Imagen link</label>
                                     <input 
                                         type="text" 
-                                        id= "{{'logoPr'+i}}" 
+                                        id= "{{'logoPr'+proyecto.id}}" 
                                         name="logo" 
                                         placeholder="Url Imagen"
                                         required>
@@ -101,7 +101,7 @@
                                     <label >Url Proyecto</label>
                                     <input 
                                         type="text" 
-                                        id= "{{'urlPr'+i}}" 
+                                        id= "{{'urlPr'+proyecto.id}}" 
                                         name="url" 
                                         placeholder="http://www.esto_es_la_url.com"
                                         required>
@@ -110,18 +110,18 @@
                                     <label >Nombre Proyecto</label>
                                     <input 
                                         type="text" 
-                                        id= "{{'nombrePr'+i}}" 
+                                        id= "{{'nombrePr'+proyecto.id}}" 
                                         placeholder="Ej. Encripador de Texto"
                                         required>
                                         <br>
                                     <label>Descripción</label>
                                     <input 
                                         type="text" 
-                                        id= "{{'descripcionPr'+i}}" 
+                                        id= "{{'descripcionPr'+proyecto.id}}" 
                                         placeholder="Ej. Programa de encriptado cesar"
                                         required>
                                         <br>
-                                    <button class="submit" type="submit" id = "{{'buttonUpdatePr' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
+                                    <button class="submit" type="submit" id = "{{'buttonUpdatePr' + i}}" (click)="actualizar_datos(proyecto.id)">Actualizar</button>  
                                 </div>  
                             </form>
                                 

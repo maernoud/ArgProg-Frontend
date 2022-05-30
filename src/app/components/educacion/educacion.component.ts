@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 import { HttpClient } from '@angular/common/http';
@@ -13,15 +13,17 @@ export class EducacionComponent implements OnInit {
   educacionList:any;
   postId:any
   
-  constructor(private datosPortfolio : PortfolioService, private authservice : AuthService, private http:HttpClient) { 
+  constructor(private datosPortfolio : PortfolioService, private authservice : AuthService, private http:HttpClient, private cRef: ChangeDetectorRef) { 
   
   }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      this.educacionList = data.education;
+    this.datosPortfolio.obtenerEducacion().subscribe(data =>{
+      this.educacionList = data;
+      // console.log(data)
+      
     })
- 
+    
   }
   userLogged = this.authservice.getUserLogged();
 
@@ -50,43 +52,49 @@ export class EducacionComponent implements OnInit {
     
     //console.log("llamada funcion crear educacion")
    
-   this.sendPostRequest(obj).subscribe((res: any) => {})
+   this.sendPostRequest(obj).subscribe((res: any) => {this.ngOnInit()})
   }
 
   cambiar_parrafo(i : number){
     document.getElementById("editable" + i)!.style.display = "block";
     console.log("llamada funcion cambiar_parrafo")
   };
-  sendPutRequest(data: any, id: string | number): Observable<any> {
+  sendPutRequest(data: any, id: number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/educacion/editar/'+id, data, requestOptions);
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}`, data, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logo"+i))?.value;
     const url = (<HTMLInputElement>document.getElementById("url"+i))?.value;
     const inst = (<HTMLInputElement>document.getElementById("institucion"+i))?.value;
     const car = (<HTMLInputElement>document.getElementById("carrera"+i))?.value;
-    const year = (<HTMLInputElement>document.getElementById("años"+i))?.value;
-    const id =(<HTMLInputElement>document.getElementById("id"+i))?.value;
+    const year = (<HTMLInputElement>document.getElementById("years"+i))?.value;
+    const id =i
     const f = JSON.stringify({"id":id,"school": inst, "career": car, "img" : img, "url":url,"years" : year})
     const obj = JSON.parse(f)
    document.getElementById("editable" + i)!.style.display = "none";
-   this.sendPutRequest(obj, id).subscribe((res: any) => {})
-    console.log(obj);
+   console.log(obj);
+   this.sendPutRequest(obj, i).subscribe((res: any) => {this.ngOnInit()})
+    
   }
-  sendDeleteRequest( id: string | number): Observable<any> {
+  sendDeleteRequest( id: number): Observable<any> {
     const requestOptions: Object = {
-      /* other options here */
+      
       responseType: 'text'
     }
-    return this.http.delete<any>('https://arg-prog-backend.herokuapp.com/educacion/borrar/'+id, requestOptions);
+    
+    return this.http.delete<any>(`https://arg-prog-backend.herokuapp.com/educacion/borrar/${id}`, requestOptions)
+    
+    
   }
   borrar_parrafo(i : number){
-    const id =(<HTMLInputElement>document.getElementById("id"+i))?.value;
-    this.sendDeleteRequest(id).subscribe((res:any)=>{});
+      
+    
+       this.sendDeleteRequest(i).subscribe((res:any)=>{this.ngOnInit()});
+    
   }
 
  

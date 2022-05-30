@@ -16,8 +16,8 @@ export class ProyectoComponent implements OnInit {
     userLogged = this.authservice.getUserLogged();
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
-      this.proyectoList = data.proyecto;})
+    this.datosPortfolio.obtenerProyectos().subscribe(data =>{
+      this.proyectoList = data;})
   }
 
   formularioAgregar(){
@@ -42,30 +42,30 @@ export class ProyectoComponent implements OnInit {
     const obj = JSON.parse(f)
    //console.log("llamada funcion crear educacion")
    
-   this.sendPostRequest(obj).subscribe((res: any) => {})
+   this.sendPostRequest(obj).subscribe((res: any) => {this.ngOnInit()})
   }
 
   cambiar_parrafo(i : number){
     document.getElementById("editablePr" + i)!.style.display = "block";
     // console.log("llamada funcion cambiar_parrafo")
   };
-  sendPutRequest(data: any, id: string | number): Observable<any> {
+  sendPutRequest(data: any, id:number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>('https://arg-prog-backend.herokuapp.com/proyecto/editar/'+id, data, requestOptions);
+    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/proyecto/editar/${id}`, data, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoPr"+i))?.value;
     const url = (<HTMLInputElement>document.getElementById("urlPr"+i))?.value;
     const title = (<HTMLInputElement>document.getElementById("nombrePr"+i))?.value;
     const des = (<HTMLInputElement>document.getElementById("descripcionPr"+i))?.value;
-    const id =(<HTMLInputElement>document.getElementById("id"+i))?.value;
+    const id =i
     const f = JSON.stringify({"id":id,"title": title , "description": des, "img" : img, "url":url})
     const obj = JSON.parse(f)
    document.getElementById("editablePr" + i)!.style.display = "none";
-   this.sendPutRequest(obj, id).subscribe((res: any) => {})
+   this.sendPutRequest(obj, id).subscribe((res: any) => {this.ngOnInit()})
     console.log(obj);
   }
   sendDeleteRequest( id: string | number): Observable<any> {
@@ -73,11 +73,11 @@ export class ProyectoComponent implements OnInit {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.delete<any>('https://arg-prog-backend.herokuapp.com/proyecto/borrar/'+id, requestOptions);
+    return this.http.delete<any>(`https://arg-prog-backend.herokuapp.com/proyecto/borrar/${id}`, requestOptions);
   }
   borrar_parrafo(i : number){
-    const id =(<HTMLInputElement>document.getElementById("idPr"+i))?.value;
-    this.sendDeleteRequest(id).subscribe((res:any)=>{});
+    
+    this.sendDeleteRequest(i).subscribe((res:any)=>{this.ngOnInit()});
   }
 
 

@@ -63,18 +63,18 @@
         <ul>
             <li *ngFor="let educacion of educacionList; let i = index" class = "item">
                 
-                    <div id = "{{'here' + i}} " class= "data-container">
+                    <div id = "{{'here' + i}} " class= "data-container" >
                         <div class = "logo-image-container">
                            <a [href]="educacion?.url" target="_blank"> <img [src]="educacion?.img"/></a>
                         </div>
                         <div class = "buttons" *ngIf="userLogged |async as user">
-                            <div (click)="cambiar_parrafo(i);">
+                            <div (click)="cambiar_parrafo(educacion.id);">
                                 <a href="{{'#here'+i}}" class="btn-right">
                                     <i class="fa fa-pen"></i>
                                 </a>
                             </div>
                             <div class="btn-edit p-2">
-                                <div (click)="borrar_parrafo(i);">
+                                <div (click)="borrar_parrafo(educacion.id);">
                                     <a href="{{'#here'+i}}" class="btn-right">
                                         <i class="fa-solid fa-xmark"></i>
                                     </a>
@@ -83,17 +83,17 @@
                         </div>
                     </div>
                             <!-- Agregar Id para poder identificar -->
-                            <h3 style="display: none;" id = "{{'id'+i}}">{{educacion?.id}}</h3>
+                            <h3 style="display: block;" id = "{{educacion.id}}" >{{educacion?.id}}</h3>
                             <h2>{{educacion?.school}}</h2>  <h3>{{educacion?.years}}</h3>
                             <p>{{educacion?.carreer}}</p>
-                            <div id = "{{'editable' +i}}" style="display: none;">
+                            <div id = "{{'editable' + educacion.id}}" style="display: none;">
                                 
                                 <form class = "formulario ">
                                     <div class="formulario">
                                         <label >Logo link</label>
                                         <input 
                                             type="text" 
-                                            id= "{{'logo'+i}}" 
+                                            id= "{{'logo'+educacion.id}}" 
                                             name="logo" 
                                             placeholder="http://www.esto_es_una_imagen.com/logo.png"
                                             required>
@@ -102,7 +102,7 @@
                                         <label >Url Institucion</label>
                                         <input 
                                             type="text" 
-                                            id= "{{'url'+i}}" 
+                                            id= "{{'url'+educacion.id}}" 
                                             name="url" 
                                             placeholder="http://www.esto_es_la_url.com"
                                             required>
@@ -111,7 +111,7 @@
                                         <label >Institucion</label>
                                         <input 
                                             type="text" 
-                                            id= "{{'institucion'+i}}" 
+                                            id= "{{'institucion'+educacion.id}}" 
                                             name="Institucion" 
                                             placeholder="Ej. Universidad Nacional de Córdoba"
                                             required>
@@ -119,7 +119,7 @@
                                         <label>Carrera</label>
                                         <input 
                                             type="text" 
-                                            id= "{{'carrera'+i}}" 
+                                            id= "{{'carrera'+educacion.id}}" 
                                             name="Carrera" 
                                             placeholder="Ej. Licenciatura en Psicologia"
                                             required>
@@ -127,12 +127,12 @@
                                         <label>Años</label>
                                         <input 
                                             type="text" 
-                                            id="{{'years'+i}}"
+                                            id="{{'years'+educacion.id}}"
                                             name="Años" 
                                             placeholder="xxxx - xxxx"
                                             required>
                                             <br>
-                                        <button class="submit" type="submit" id = "{{'buttonUpdate' + i}}" (click)="actualizar_datos(i)">Actualizar</button>  
+                                        <button class="submit" type="submit" id = "{{'buttonUpdate' + i}}" (click)="actualizar_datos(educacion.id)">Actualizar</button>  
                                     </div>  
                                 </form>
                                     
