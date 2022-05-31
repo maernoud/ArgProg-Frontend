@@ -16,6 +16,13 @@
                     </div>
                 </div>
             </div>
+            
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <span>
+            <h1>Acerca de </h1>
+            <h6>{{about}}</h6>
+
             <div id = "editableAb" style = "display: none;">
                 <form class = "formulario ">
                     <div class="formulario">
@@ -38,21 +45,16 @@
                             <br>
                         
                         <label >Acerca de</label>
-                        <input 
+                        <textarea 
                             type="text" 
                             id= "acercaDe" 
                             
                             placeholder="Descripcion Corta"
-                            required>
+                            required></textarea>
                         <button class= "submit" type="submit" id = "updateAb" (click)="actualizar_datos()">Actualizar</button> 
                     </div>
                 </form>
             </div>
-    </div>
-    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <span>
-            <h1>Acerca de </h1>
-            <h6>{{about}}</h6>
         </span>
     </div>
 </div> 

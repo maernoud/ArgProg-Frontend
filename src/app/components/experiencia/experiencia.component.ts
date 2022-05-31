@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -52,25 +52,36 @@ export class ExperienciaComponent implements OnInit {
     document.getElementById("editableEx" + i)!.style.display = "block";
     console.log("llamada funcion cambiar_parrafo")
   };
-  sendPutRequest(data: any, id: string | number): Observable<any> {
+  sendPutRequest(img:any, url:any, inst:any, car:any, year:any, id: number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/experiencia/editar/${id}`, data, requestOptions);
+    const params = new HttpParams()
+      .set('company', inst)
+      .set("position", car)
+      .set("img", img)
+      .set("url",url)
+      .set("years",year);
+      const httpParams =params.toString()
+    //  const directParams = ""+inst+"&"+car+"&"+img+"&"+url+"&"+year 
+    console.log(httpParams)
+    // console.log(directParams)
+
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/experiencia/editar/${id}?`+ httpParams, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoEx"+i))?.value;
     const url = (<HTMLInputElement>document.getElementById("urlEx"+i))?.value;
     const inst = (<HTMLInputElement>document.getElementById("institucionEx"+i))?.value;
-    const car = (<HTMLInputElement>document.getElementById("carreraEx"+i))?.value;
-    const year = (<HTMLInputElement>document.getElementById("añosEx"+i))?.value;
+    const car = (<HTMLInputElement>document.getElementById("posicionEx"+i))?.value;
+    const year = (<HTMLInputElement>document.getElementById("yearsEx"+i))?.value;
     const id =i
-    const f = JSON.stringify({"id":id,"company": inst, "position": car, "img" : img, "url":url,"years" : year})
-    const obj = JSON.parse(f)
+    // const f = JSON.stringify({"id":id,"company": inst, "position": car, "img" : img, "url":url,"years" : year})
+    // const obj = JSON.parse(f)
    document.getElementById("editableEx" + i)!.style.display = "none";
-    console.log(obj);
-   this.sendPutRequest(obj, i).subscribe((res: any) => {this.ngOnInit()})
+    // console.log(obj);
+   this.sendPutRequest(img, url, inst, car, year, i).subscribe((res: any) => {this.ngOnInit()})
    
   }
   sendDeleteRequest( id: number): Observable<any> {

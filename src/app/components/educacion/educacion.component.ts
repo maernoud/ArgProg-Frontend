@@ -60,6 +60,7 @@ export class EducacionComponent implements OnInit {
     console.log("llamada funcion cambiar_parrafo")
   };
   sendPutRequest(inst:any,car:any,img:any,url:any,year:any, id: number): Observable<any> {
+  //sendPutRequest(obj:any, id: number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
@@ -71,10 +72,12 @@ export class EducacionComponent implements OnInit {
       .set("url",url)
       .set("years",year);
       const httpParams =params.toString()
-     const directParams = ""+inst+"&"+car+"&"+img+"&"+url+"&"+year 
+    //  const directParams = ""+inst+"&"+car+"&"+img+"&"+url+"&"+year 
     console.log(httpParams)
+    // console.log(directParams)
 
-    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}`+directParams, requestOptions);
+    //return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}`, obj, requestOptions);
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/educacion/editar/${id}?`+httpParams, requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logo"+i))?.value;
@@ -83,11 +86,12 @@ export class EducacionComponent implements OnInit {
     const car = (<HTMLInputElement>document.getElementById("carrera"+i))?.value;
     const year = (<HTMLInputElement>document.getElementById("years"+i))?.value;
     const id =i
-    // const f = JSON.stringify({"id":id,"school": inst, "career": car, "img" : img, "url":url,"years" : year})
-    // const obj = JSON.parse(f)
+    //  const f = JSON.stringify({"id":id,"school": inst, "career": car, "img" : img, "url":url,"years" : year})
+    //  const obj = JSON.parse(f)
    document.getElementById("editable" + i)!.style.display = "none";
   //  console.log(obj);
    this.sendPutRequest(inst, car, img, url,year, i).subscribe((res: any) => {this.ngOnInit()})
+  //  this.sendPutRequest(obj, i).subscribe((res: any) => {this.ngOnInit()})
     
   }
   sendDeleteRequest( id: number): Observable<any> {

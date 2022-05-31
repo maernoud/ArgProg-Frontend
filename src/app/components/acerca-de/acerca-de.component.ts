@@ -43,9 +43,8 @@ export class AcercaDeComponent implements OnInit {
       responseType: 'text'
     }
     const params = new HttpParams()
-      
-      .set("img", img)
       .set("position",pos)
+      .set("img", img)
       .set("about",about);
       const httpParams =params.toString()
     return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/about/editar/26?`+httpParams,requestOptions);
@@ -54,10 +53,10 @@ export class AcercaDeComponent implements OnInit {
     const img = (<HTMLInputElement>document.getElementById("fotoAb"))?.value;
     const pos = (<HTMLInputElement>document.getElementById("posicionAb"))?.value;
     const about = (<HTMLInputElement>document.getElementById("acercaDe"))?.value;
-    const f = JSON.stringify({"img":img, "position": pos, "about" : about})
-    const obj = JSON.parse(f)
+    // const f = JSON.stringify({"img":img, "position": pos, "about" : about})
+    // const obj = JSON.parse(f)
    document.getElementById("editableAb")!.style.display = "none";
-   this.sendPutRequest(img,pos,about).subscribe((res: any) => {})
+   this.sendPutRequest(img,pos,about).subscribe((res: any) => {this.ngOnInit()})
     //console.log(obj);
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -50,12 +50,20 @@ export class ProyectoComponent implements OnInit {
     document.getElementById("editablePr" + i)!.style.display = "block";
     // console.log("llamada funcion cambiar_parrafo")
   };
-  sendPutRequest(data: any, id:number): Observable<any> {
+  sendPutRequest(title : any, des:any, img:any,url:any, id:number): Observable<any> {
     const requestOptions: Object = {
       /* other options here */
       responseType: 'text'
     }
-    return this.http.post<any>(`https://arg-prog-backend.herokuapp.com/proyectos/editar/${id}`, data, requestOptions);
+    const params = new HttpParams()
+      .set('title', title)
+      .set("description", des)
+      .set("img", img)
+      .set("url",url);
+      const httpParams =params.toString()
+    //  const directParams = ""+inst+"&"+car+"&"+img+"&"+url+"&"+year 
+    console.log(httpParams)
+    return this.http.put<any>(`https://arg-prog-backend.herokuapp.com/proyectos/editar/${id}?`+ httpParams,  requestOptions);
   }
   actualizar_datos(i:number){
     const img = (<HTMLInputElement>document.getElementById("logoPr"+i))?.value;
@@ -63,11 +71,11 @@ export class ProyectoComponent implements OnInit {
     const title = (<HTMLInputElement>document.getElementById("nombrePr"+i))?.value;
     const des = (<HTMLInputElement>document.getElementById("descripcionPr"+i))?.value;
     const id =i
-    const f = JSON.stringify({"id":id,"title": title , "description": des, "img" : img, "url":url})
-    const obj = JSON.parse(f)
+    // const f = JSON.stringify({"id":id,"title": title , "description": des, "img" : img, "url":url})
+    // const obj = JSON.parse(f)
    document.getElementById("editablePr" + i)!.style.display = "none";
-   this.sendPutRequest(obj, id).subscribe((res: any) => {this.ngOnInit()})
-    console.log(obj);
+   this.sendPutRequest(title, des, img, url, id).subscribe((res: any) => {this.ngOnInit()})
+    // console.log(obj);
   }
   sendDeleteRequest( id: string | number): Observable<any> {
     const requestOptions: Object = {
